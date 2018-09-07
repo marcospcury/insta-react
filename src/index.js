@@ -6,6 +6,7 @@ import './css/login.css';
 import App from './App';
 import Login from './components/auth/login';
 import Logout from './components/auth/logout';
+import Profile from './components/profile';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 
@@ -32,6 +33,7 @@ ReactDOM.render((
     <div>
       <Route exact path="/" component={Login} />
       <Route path="/logout" component={Logout} />
+      <Route path="/profile/:login" component={Profile} />
       <PrivateRoute path="/timeline" component={App} />
     </div>
   </BrowserRouter>

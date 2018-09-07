@@ -1,15 +1,17 @@
 import React from 'react';
-import Header from './components/header';
-import Timeline from './components/timeline';
+import Header from './header';
+import Timeline from './timeline';
 
-class App extends React.Component {
+export default class Profile extends React.Component {
   constructor() {
     super();
     this.state = { photos: [] };
   }
 
   componentDidMount() {
-    fetch(`http://localhost:8080/api/fotos?X-AUTH-TOKEN=${localStorage.getItem('auth-token')}`)
+    const { login } = this.props.match.params
+
+    fetch(`http://localhost:8080/api/public/fotos/${login}`)
       .then(response => response.json())
       .then(photos => {
         this.setState({ photos: photos });
@@ -25,5 +27,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;

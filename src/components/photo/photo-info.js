@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class PhotoInfo extends React.Component {
   render() {
@@ -7,7 +8,7 @@ export default class PhotoInfo extends React.Component {
         <div className="foto-info-likes">
           {
             this.props.photo.likers.map((liker) => {
-              return (<a href="#">{liker.login}, </a>)
+              return (<Link to={`/profile/${liker.login}`}>{liker.login}, </Link>)
             })
           }
           curtiram
@@ -20,7 +21,7 @@ export default class PhotoInfo extends React.Component {
           {this.props.photo.comentarios.map(comment => {
             return (
               <li className="comentario" key={comment.id}>
-                <a className="foto-info-autor">{comment.login} </a>
+                <Link to={`/profile/${comment.login}`} className="foto-info-autor">{comment.login} </Link>
                 {comment.texto}
               </li>
             );
