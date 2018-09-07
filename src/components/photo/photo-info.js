@@ -5,7 +5,7 @@ import PubSub from 'pubsub-js';
 export default class PhotoInfo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { likers: this.props.photo.likers };
+    this.state = { likers: this.props.photo.likers, comments: this.props.photo.comentarios };
   }
 
   componentWillMount() {
@@ -22,6 +22,13 @@ export default class PhotoInfo extends React.Component {
           console.log(likersUpdate);
           this.setState({ likers: likersUpdate });
         }
+      }
+    });
+
+    PubSub.subscribe('new-comment', (topico, commentInfo) => {
+      if (this.props.photo.id === commentInfo.photoId) {
+        const newComments = this.state.comments.concat(commentInfo.newComment);
+        this.setState({ comments: newComments });
       }
     });
   }
@@ -42,7 +49,7 @@ export default class PhotoInfo extends React.Component {
           {this.props.photo.comentario}
         </p>
         <ul className="foto-info-comentarios">
-          {this.props.photo.comentarios.map(comment => {
+          {this.state.comments.map(comment => {
             return (
               <li className="comentario" key={comment.id}>
                 <Link to={`/profile/${comment.login}`} className="foto-info-autor">{comment.login} </Link>
