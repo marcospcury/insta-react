@@ -1,4 +1,5 @@
 import React from 'react';
+import PubSub from 'pubsub-js';
 
 export default class PhotoUpdates extends React.Component {
   constructor(props) {
@@ -15,8 +16,9 @@ export default class PhotoUpdates extends React.Component {
           throw new Error("não foi possível realizar o like da foto");
         }
       })
-      .then(like => {
-        this.setState({ liked: !this.state.liked })
+      .then(liker => {
+        this.setState({ liked: !this.state.liked });
+        PubSub.publish('liker-update', { photoId: this.props.photo.id, liker });
       });
   }
 
