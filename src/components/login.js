@@ -37,7 +37,7 @@ export default class Login extends React.Component {
     const { redirectTo } = this.state;
 
     if (redirectTo) {
-      return <Redirect push to={redirectTo} />;
+      return <Redirect to={redirectTo} />;
     }
     else {
       return (

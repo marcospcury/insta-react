@@ -11,7 +11,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 ReactDOM.render((
   <BrowserRouter>
     <div>
-      <Route path="/" component={Login} />
+      <Route exact path="/" component={Login} />
       <Route path="/timeline" component={App} />
     </div>
   </BrowserRouter>
