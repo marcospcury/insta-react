@@ -4,7 +4,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <header className="header container">
-        <h1 className="header-logo">Instalura</h1>
+        <h1 className="header-logo">Insta-React</h1>
         <form className="header-busca">
           <input type="text" name="search" placeholder="Pesquisa" className="header-busca-campo" />
           <input type="submit" value="Buscar" className="header-busca-submit" />
