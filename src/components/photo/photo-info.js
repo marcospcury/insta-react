@@ -19,7 +19,7 @@ export default class PhotoInfo extends React.Component {
         <ul className="foto-info-comentarios">
           {this.props.photo.comentarios.map(comment => {
             return (
-              <li className="comentario">
+              <li className="comentario" key={comment.id}>
                 <a className="foto-info-autor">{comment.login} </a>
                 {comment.texto}
               </li>
