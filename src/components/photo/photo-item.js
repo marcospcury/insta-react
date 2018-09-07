@@ -10,7 +10,7 @@ export default class PhotoItem extends React.Component {
         <PhotoHeader photo={this.props.photo} />
         <img alt="foto" className="foto-src" src={this.props.photo.urlFoto} />
         <PhotoInfo photo={this.props.photo} />
-        <PhotoUpdates />
+        <PhotoUpdates photo={this.props.photo} />
       </div>
     );
   }
