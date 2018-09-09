@@ -1,11 +1,18 @@
 import React from 'react';
 import Header from './components/header';
 import Timeline from './components/timeline';
+import PubSub from 'pubsub-js';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = { photos: [] };
+  }
+
+  componentWillMount() {
+    PubSub.subscribe('search-executed', (topic, photos) => {
+      this.setState({ photos: photos });
+    });
   }
 
   componentDidMount() {
