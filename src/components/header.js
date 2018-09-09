@@ -7,7 +7,7 @@ export default class Header extends React.Component {
     fetch(`http://localhost:8080/api/public/fotos/${this.searchTerm.value}`)
       .then(response => response.json())
       .then(photos => {
-        PubSub.publish('search-executed', photos);
+        PubSub.publish('timeline-refresh', photos);
       })
   }
 
